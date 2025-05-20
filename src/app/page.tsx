@@ -4,7 +4,7 @@ import RightSidebar from "../components/RightSidebar";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col md:flex-row justify-center gap-6 p-4">
+    <main className="flex flex-col md:flex-row justify-center gap-6 p-4 pt-20">
       <div className="hidden md:block w-full max-w-xs">
         <SidebarProfile />
       </div>
