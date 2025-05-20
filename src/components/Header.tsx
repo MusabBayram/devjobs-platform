@@ -2,13 +2,45 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import {
+  HomeIcon,
+  UsersIcon,
+  PlusCircleIcon,
+  BellIcon,
+  BriefcaseIcon,
+  ChatBubbleOvalLeftEllipsisIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <header className="bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
+      <div className="flex items-center justify-between md:hidden">
+        <Link href="/profile">
+          <img
+            src="/avatar-placeholder.png"
+            alt="Profile"
+            className="w-8 h-8 rounded-full"
+          />
+        </Link>
+        <input
+          type="text"
+          placeholder="Search"
+          className="bg-zinc-100 dark:bg-zinc-800 text-sm px-3 py-1.5 rounded-md outline-none flex-1 mx-3"
+        />
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 text-zinc-600 dark:text-zinc-300"
+          >
+            <path d="M2 5a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H6l-4 4V5z" />
+          </svg>
+        </button>
+      </div>
+      <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center">
         <div className="flex items-center space-x-3">
           <img src="/linkedin-icon.png" alt="Logo" className="h-6 w-6" />
           <input
@@ -22,20 +54,7 @@ export default function Header() {
             href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7m-9 2v8"
-              />
-            </svg>
+            <HomeIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
             <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400">
               Home
             </span>
@@ -44,20 +63,7 @@ export default function Header() {
             href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 20h5V4H2v16h5m10-14H7m0 6h10m-6 4h2"
-              />
-            </svg>
+            <UsersIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
             <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400">
               My Network
             </span>
@@ -66,26 +72,7 @@ export default function Header() {
             href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 14l9-5-9-5-9 5 9 5z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"
-              />
-            </svg>
+            <BriefcaseIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
             <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400">
               Jobs
             </span>
@@ -94,20 +81,7 @@ export default function Header() {
             href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 10h.01M12 10h.01M16 10h.01M21 16v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4"
-              />
-            </svg>
+            <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
             <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400">
               Messaging
             </span>
@@ -116,20 +90,7 @@ export default function Header() {
             href="#"
             className="relative group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 17h5l-1.405-1.405M4 6h16M4 10h16M4 14h10"
-              />
-            </svg>
+            <BellIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
             <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400">
               Notifications
             </span>
