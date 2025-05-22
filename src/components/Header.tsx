@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   HomeIcon,
   UsersIcon,
-  PlusCircleIcon,
   BellIcon,
   BriefcaseIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -17,13 +16,11 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
       <div className="flex items-center justify-between md:hidden">
-        <Link href="/profile">
-          <img
-            src="/avatar-placeholder.png"
-            alt="Profile"
-            className="w-8 h-8 rounded-full"
-          />
-        </Link>
+        <img
+          src="/avatar-placeholder.png"
+          alt="Profile"
+          className="w-8 h-8 rounded-full"
+        />
         <input
           type="text"
           placeholder="Search"
@@ -51,7 +48,7 @@ export default function Header() {
         </div>
         <nav className="flex items-center space-x-6 text-sm">
           <Link
-            href="#"
+            href="/"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <HomeIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -69,7 +66,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/jobs"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <BriefcaseIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
