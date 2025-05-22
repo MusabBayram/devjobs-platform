@@ -1,4 +1,3 @@
-
 export interface BusinessPost {
     id: number;
     name: string;
@@ -71,4 +70,15 @@ export async function getJobs(): Promise<Job[]> {
 
     const data = await res.json();
     return data.jobs;
+}
+
+export async function getNewJobs(): Promise<Job[]> {
+    const res = await fetch("https://www.arbeitnow.com/api/job-board-api");
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch new jobs");
+    }
+
+    const data = await res.json();
+    return data.data; // this may vary based on actual API response structure
 }
