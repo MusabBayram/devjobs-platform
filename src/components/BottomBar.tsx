@@ -11,7 +11,7 @@ import {
 
 export default function BottomBar() {
   return (
-    <nav className="sticky bottom-0 left-0 right-0 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 flex justify-around items-center py-2 z-50 md:hidden">
+    <nav className="sticky bottom-0 left-0 mt-6 right-0 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 flex justify-around items-center py-2 z-50 md:hidden">
       <Link
         href="#"
         className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300"
