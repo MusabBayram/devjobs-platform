@@ -44,7 +44,7 @@ export default function BottomBar() {
         </span>
       </Link>
       <Link
-        href="#"
+        href="/jobs"
         className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300"
       >
         <BriefcaseIcon className="h-6 w-6" />
