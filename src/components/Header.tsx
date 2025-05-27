@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   HomeIcon,
@@ -12,34 +12,36 @@ import {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
-      <div className="flex items-center justify-between md:hidden">
-        <img
-          src="/avatar-placeholder.png"
-          alt="Profile"
-          className="w-8 h-8 rounded-full"
-        />
-        <input
-          type="text"
-          placeholder="Search"
-          className="bg-zinc-100 dark:bg-zinc-800 text-sm px-3 py-1.5 rounded-md outline-none flex-1 mx-3"
-        />
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            className="w-6 h-6 text-zinc-600 dark:text-zinc-300"
-          >
-            <path d="M2 5a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H6l-4 4V5z" />
-          </svg>
-        </button>
-      </div>
       <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center">
         <div className="flex items-center space-x-3">
-          <img src="/linkedin-icon.png" alt="Logo" className="h-6 w-6" />
+          <div className="w-10 h-10 rounded-xs bg-zinc-600 text-white flex items-center justify-center font-bold">
+            {"DJ".slice(0, 2).toUpperCase()}
+          </div>
           <input
             type="text"
             placeholder="Search"
@@ -95,7 +97,10 @@ export default function Header() {
               11
             </span>
           </Link>
-          <div className="relative text-gray-700 dark:text-gray-300">
+          <div
+            ref={dropdownRef}
+            className="relative text-gray-700 dark:text-gray-300"
+          >
             <div
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="group flex flex-col items-center cursor-pointer hover:text-blue-400"
@@ -135,9 +140,12 @@ export default function Header() {
                     </p>
                   </div>
                 </div>
-                <button className="w-full text-blue-600 border border-blue-600 rounded-md py-1 text-sm font-medium mb-4 hover:bg-blue-50 dark:hover:bg-zinc-800">
+                <Link
+                  href="/profile"
+                  className="block text-center w-full text-sm text-blue-600 font-semibold py-1.5 rounded-md hover:bg-blue-50 dark:hover:bg-zinc-800 border border-blue-600 transition mb-2"
+                >
                   View Profile
-                </button>
+                </Link>
                 <div className="text-sm text-zinc-700 dark:text-zinc-300">
                   <p className="py-1 border-b dark:border-zinc-700">
                     Premium Features
