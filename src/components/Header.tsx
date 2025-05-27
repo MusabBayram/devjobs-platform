@@ -12,7 +12,7 @@ import {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -24,16 +24,11 @@ export default function Header() {
       }
     }
 
-    if (isDropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownOpen]);
+  }, [dropdownRef]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
@@ -97,10 +92,7 @@ export default function Header() {
               11
             </span>
           </Link>
-          <div
-            ref={dropdownRef}
-            className="relative text-gray-700 dark:text-gray-300"
-          >
+          <div className="relative text-gray-700 dark:text-gray-300" ref={dropdownRef}>
             <div
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="group flex flex-col items-center cursor-pointer hover:text-blue-400"
