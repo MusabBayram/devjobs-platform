@@ -24,8 +24,8 @@ export default function JobsPageWrapper() {
   return (
     <>
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 gap-6 p-4 max-w-7xl mx-auto h-[calc(100vh-80px)] ${
-          isModalOpen ? "" : "pt-20"
+        className={`grid grid-cols-1 md:grid-cols-2 gap-6 p-4 max-w-7xl mx-auto h-[calc(100vh-80px)] md:pt-20 ${
+          isModalOpen ? "" : "pt-10"
         }`}
       >
         <div className="overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
