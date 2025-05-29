@@ -54,7 +54,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/mynetwork"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <UsersIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -72,7 +72,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/messaging"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -92,7 +92,10 @@ export default function Header() {
               11
             </span>
           </Link>
-          <div className="relative text-gray-700 dark:text-gray-300" ref={dropdownRef}>
+          <div
+            className="relative text-gray-700 dark:text-gray-300"
+            ref={dropdownRef}
+          >
             <div
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="group flex flex-col items-center cursor-pointer hover:text-blue-400"
