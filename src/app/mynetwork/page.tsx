@@ -137,18 +137,27 @@ export default function MyNetworkPage() {
           {users.map((user) => (
             <div
               key={user.id}
-              className="bg-zinc-800 p-4 rounded-lg shadow flex flex-col items-center text-center border border-zinc-700 hover:shadow-lg transition"
+              className="bg-zinc-800 p-4 rounded-lg shadow flex flex-col justify-between text-center border border-zinc-700 hover:shadow-lg transition h-full"
             >
-              <Image
-                src={user.image}
-                alt={user.name}
-                width={64}
-                height={64}
-                className="rounded-full object-cover border border-gray-500"
-              />
-              <h3 className="font-semibold mt-2">{user.name}</h3>
-              <p className="text-sm text-zinc-400">{user.title}</p>
-              <p className="text-xs text-zinc-500 mt-1">{user.mutual}</p>
+              <div
+                style={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  src={user.image}
+                  alt={user.name}
+                  width={64}
+                  height={64}
+                  className="rounded-full object-cover border border-gray-500"
+                />
+                <h3 className="font-semibold mt-2">{user.name}</h3>
+                <p className="text-sm text-zinc-400">{user.title}</p>
+                <p className="text-xs text-zinc-500 mt-1">{user.mutual}</p>
+              </div>
               <button className="w-full mt-2 bg-blue-600 text-white text-sm py-2 rounded hover:bg-blue-700 transition">
                 Connect
               </button>
