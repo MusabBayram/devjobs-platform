@@ -7,7 +7,7 @@ const messages = [
   {
     name: "Sefer Saatchi",
     title: "IT Recruitment Specialist",
-    avatar: "/assets/avatars/sefer.png",
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     date: "7 Mar",
     content: [
       "Hi Musab, please review the following test link.",
@@ -18,7 +18,7 @@ const messages = [
   {
     name: "Amelia Brown",
     title: "HR Coordinator at TechSolutions",
-    avatar: "/assets/avatars/amelia.png",
+    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
     date: "5 Mar",
     content: [
       "Hi Musab, we reviewed your application.",
@@ -28,7 +28,7 @@ const messages = [
   {
     name: "James Morgan",
     title: "Lead Frontend Engineer",
-    avatar: "/assets/avatars/james.png",
+    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     date: "4 Mar",
     content: [
       "Can you take a look at our latest UI draft?",
@@ -38,7 +38,7 @@ const messages = [
   {
     name: "Ava Smith",
     title: "Technical Recruiter - Remote Jobs",
-    avatar: "/assets/avatars/ava.png",
+    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
     date: "3 Mar",
     content: [
       "Remote opportunity available for you!",
@@ -48,14 +48,14 @@ const messages = [
   {
     name: "Liam Johnson",
     title: "Founder at DevStartups",
-    avatar: "/assets/avatars/liam.png",
+    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
     date: "2 Mar",
     content: ["Thanks for reaching out.", "Let’s schedule a quick call."],
   },
   {
     name: "Emily Davis",
     title: "Product Designer at Appify",
-    avatar: "/assets/avatars/emily.png",
+    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
     date: "28 Feb",
     content: [
       "Would you like to collaborate on a Figma project?",
@@ -65,28 +65,28 @@ const messages = [
   {
     name: "Noah Thompson",
     title: "DevOps Engineer at CloudNet",
-    avatar: "/assets/avatars/noah.png",
+    avatar: "https://randomuser.me/api/portraits/men/7.jpg",
     date: "27 Feb",
     content: ["Deployment process updated.", "See internal repo for details."],
   },
   {
     name: "Sophia Turner",
     title: "Full Stack Developer",
-    avatar: "/assets/avatars/sophia.png",
+    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
     date: "26 Feb",
     content: ["Check out this repo.", "Let’s sync later this week."],
   },
   {
     name: "William Scott",
     title: "Engineering Manager at CodeBase",
-    avatar: "/assets/avatars/william.png",
+    avatar: "https://randomuser.me/api/portraits/men/9.jpg",
     date: "25 Feb",
     content: ["Great job on the last sprint!", "Let’s plan the retrospective."],
   },
   {
     name: "Olivia Wilson",
     title: "CTO at Innovatech",
-    avatar: "/assets/avatars/olivia.png",
+    avatar: "https://randomuser.me/api/portraits/women/10.jpg",
     date: "24 Feb",
     content: ["Excited about our Q3 roadmap.", "Thanks for the feedback."],
   },
@@ -185,8 +185,23 @@ export default function MessagingPage() {
           </div>
           <div className="flex-1 overflow-y-auto p-4 space-y-6 h-full max-h-screen">
             {selected.content.map((text, index) => (
-              <div key={index} className="text-sm text-zinc-300">
-                <p>{text}</p>
+              <div key={index} className="flex items-start gap-3 mb-4">
+                <img
+                  src={selected.avatar}
+                  alt={selected.name}
+                  className="w-8 h-8 rounded-full mt-1"
+                />
+                <div>
+                  <div className="text-sm text-white font-semibold">
+                    {selected.name}
+                  </div>
+                  <div className="text-xs text-zinc-400 mb-1">
+                    {selected.title}
+                  </div>
+                  <p className="text-sm text-zinc-300 bg-zinc-800 p-3 rounded-lg max-w-lg">
+                    {text}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
