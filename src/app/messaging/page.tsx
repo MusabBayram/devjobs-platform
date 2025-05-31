@@ -224,7 +224,22 @@ export default function MessagingPage() {
                 }`}
               >
                 {text.sender === "user" ? (
-                  <div className="flex flex-col items-end">
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="flex items-center justify-end gap-3">
+                      <div className="text-right">
+                        <div className="text-sm text-white font-semibold">
+                          Musab Bayram
+                        </div>
+                        <div className="text-xs text-zinc-400">
+                          Frontend Developer
+                        </div>
+                      </div>
+                      <img
+                        src="/avatar-placeholder.png"
+                        alt="Musab Bayram"
+                        className="w-8 h-8 rounded-full mt-1"
+                      />
+                    </div>
                     <p className="text-sm text-zinc-300 bg-blue-600 p-3 rounded-lg max-w-lg text-white">
                       {text.text}
                     </p>
