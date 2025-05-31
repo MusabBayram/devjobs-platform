@@ -11,9 +11,12 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/men/1.jpg",
       date: "7 Mar",
       content: [
-        "Hi Musab, please review the following test link.",
-        "https://hire.toggl.com/c/eqeyoj8vv4",
-        "Let me know your thoughts.",
+        {
+          text: "Hi Musab, please review the following test link.",
+          sender: "other",
+        },
+        { text: "https://hire.toggl.com/c/eqeyoj8vv4", sender: "other" },
+        { text: "Let me know your thoughts.", sender: "other" },
       ],
     },
     {
@@ -22,8 +25,11 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/women/2.jpg",
       date: "5 Mar",
       content: [
-        "Hi Musab, we reviewed your application.",
-        "We're pleased to move you to the next stage.",
+        { text: "Hi Musab, we reviewed your application.", sender: "other" },
+        {
+          text: "We're pleased to move you to the next stage.",
+          sender: "other",
+        },
       ],
     },
     {
@@ -32,8 +38,11 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/men/3.jpg",
       date: "4 Mar",
       content: [
-        "Can you take a look at our latest UI draft?",
-        "Would love your feedback.",
+        {
+          text: "Can you take a look at our latest UI draft?",
+          sender: "other",
+        },
+        { text: "Would love your feedback.", sender: "other" },
       ],
     },
     {
@@ -42,8 +51,8 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/women/4.jpg",
       date: "3 Mar",
       content: [
-        "Remote opportunity available for you!",
-        "Let me know if you're interested.",
+        { text: "Remote opportunity available for you!", sender: "other" },
+        { text: "Let me know if you're interested.", sender: "other" },
       ],
     },
     {
@@ -51,7 +60,10 @@ export default function MessagingPage() {
       title: "Founder at DevStartups",
       avatar: "https://randomuser.me/api/portraits/men/5.jpg",
       date: "2 Mar",
-      content: ["Thanks for reaching out.", "Let’s schedule a quick call."],
+      content: [
+        { text: "Thanks for reaching out.", sender: "other" },
+        { text: "Let’s schedule a quick call.", sender: "other" },
+      ],
     },
     {
       name: "Emily Davis",
@@ -59,8 +71,11 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/women/6.jpg",
       date: "28 Feb",
       content: [
-        "Would you like to collaborate on a Figma project?",
-        "I admire your work.",
+        {
+          text: "Would you like to collaborate on a Figma project?",
+          sender: "other",
+        },
+        { text: "I admire your work.", sender: "other" },
       ],
     },
     {
@@ -69,8 +84,8 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/men/7.jpg",
       date: "27 Feb",
       content: [
-        "Deployment process updated.",
-        "See internal repo for details.",
+        { text: "Deployment process updated.", sender: "other" },
+        { text: "See internal repo for details.", sender: "other" },
       ],
     },
     {
@@ -78,7 +93,10 @@ export default function MessagingPage() {
       title: "Full Stack Developer",
       avatar: "https://randomuser.me/api/portraits/women/8.jpg",
       date: "26 Feb",
-      content: ["Check out this repo.", "Let’s sync later this week."],
+      content: [
+        { text: "Check out this repo.", sender: "other" },
+        { text: "Let’s sync later this week.", sender: "other" },
+      ],
     },
     {
       name: "William Scott",
@@ -86,8 +104,8 @@ export default function MessagingPage() {
       avatar: "https://randomuser.me/api/portraits/men/9.jpg",
       date: "25 Feb",
       content: [
-        "Great job on the last sprint!",
-        "Let’s plan the retrospective.",
+        { text: "Great job on the last sprint!", sender: "other" },
+        { text: "Let’s plan the retrospective.", sender: "other" },
       ],
     },
     {
@@ -95,7 +113,10 @@ export default function MessagingPage() {
       title: "CTO at Innovatech",
       avatar: "https://randomuser.me/api/portraits/women/10.jpg",
       date: "24 Feb",
-      content: ["Excited about our Q3 roadmap.", "Thanks for the feedback."],
+      content: [
+        { text: "Excited about our Q3 roadmap.", sender: "other" },
+        { text: "Thanks for the feedback.", sender: "other" },
+      ],
     },
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -199,15 +220,13 @@ export default function MessagingPage() {
               <div
                 key={index}
                 className={`flex mb-4 ${
-                  index === selected.content.length - 1
-                    ? "justify-end"
-                    : "items-start gap-3"
+                  text.sender === "user" ? "justify-end" : "items-start gap-3"
                 }`}
               >
-                {index === selected.content.length - 1 ? (
+                {text.sender === "user" ? (
                   <div className="flex flex-col items-end">
                     <p className="text-sm text-zinc-300 bg-blue-600 p-3 rounded-lg max-w-lg text-white">
-                      {text}
+                      {text.text}
                     </p>
                   </div>
                 ) : (
@@ -225,7 +244,7 @@ export default function MessagingPage() {
                         {selected.title}
                       </div>
                       <p className="text-sm text-zinc-300 bg-zinc-800 p-3 rounded-lg max-w-lg">
-                        {text}
+                        {text.text}
                       </p>
                     </div>
                   </>
@@ -246,7 +265,10 @@ export default function MessagingPage() {
               onClick={() => {
                 if (!newMessage.trim()) return;
                 const updatedMessages = [...messages];
-                updatedMessages[selectedIndex].content.push(newMessage);
+                updatedMessages[selectedIndex].content.push({
+                  text: newMessage,
+                  sender: "user",
+                });
                 setNewMessage("");
                 setMessages(updatedMessages);
               }}
