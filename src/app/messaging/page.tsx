@@ -3,114 +3,125 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
-const messages = [
-  {
-    name: "Sefer Saatchi",
-    title: "IT Recruitment Specialist",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    date: "7 Mar",
-    content: [
-      "Hi Musab, please review the following test link.",
-      "https://hire.toggl.com/c/eqeyoj8vv4",
-      "Let me know your thoughts.",
-    ],
-  },
-  {
-    name: "Amelia Brown",
-    title: "HR Coordinator at TechSolutions",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    date: "5 Mar",
-    content: [
-      "Hi Musab, we reviewed your application.",
-      "We're pleased to move you to the next stage.",
-    ],
-  },
-  {
-    name: "James Morgan",
-    title: "Lead Frontend Engineer",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    date: "4 Mar",
-    content: [
-      "Can you take a look at our latest UI draft?",
-      "Would love your feedback.",
-    ],
-  },
-  {
-    name: "Ava Smith",
-    title: "Technical Recruiter - Remote Jobs",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-    date: "3 Mar",
-    content: [
-      "Remote opportunity available for you!",
-      "Let me know if you're interested.",
-    ],
-  },
-  {
-    name: "Liam Johnson",
-    title: "Founder at DevStartups",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-    date: "2 Mar",
-    content: ["Thanks for reaching out.", "Let’s schedule a quick call."],
-  },
-  {
-    name: "Emily Davis",
-    title: "Product Designer at Appify",
-    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
-    date: "28 Feb",
-    content: [
-      "Would you like to collaborate on a Figma project?",
-      "I admire your work.",
-    ],
-  },
-  {
-    name: "Noah Thompson",
-    title: "DevOps Engineer at CloudNet",
-    avatar: "https://randomuser.me/api/portraits/men/7.jpg",
-    date: "27 Feb",
-    content: ["Deployment process updated.", "See internal repo for details."],
-  },
-  {
-    name: "Sophia Turner",
-    title: "Full Stack Developer",
-    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-    date: "26 Feb",
-    content: ["Check out this repo.", "Let’s sync later this week."],
-  },
-  {
-    name: "William Scott",
-    title: "Engineering Manager at CodeBase",
-    avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-    date: "25 Feb",
-    content: ["Great job on the last sprint!", "Let’s plan the retrospective."],
-  },
-  {
-    name: "Olivia Wilson",
-    title: "CTO at Innovatech",
-    avatar: "https://randomuser.me/api/portraits/women/10.jpg",
-    date: "24 Feb",
-    content: ["Excited about our Q3 roadmap.", "Thanks for the feedback."],
-  },
-];
-
 export default function MessagingPage() {
+  const [messages, setMessages] = useState([
+    {
+      name: "Sefer Saatchi",
+      title: "IT Recruitment Specialist",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+      date: "7 Mar",
+      content: [
+        "Hi Musab, please review the following test link.",
+        "https://hire.toggl.com/c/eqeyoj8vv4",
+        "Let me know your thoughts.",
+      ],
+    },
+    {
+      name: "Amelia Brown",
+      title: "HR Coordinator at TechSolutions",
+      avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+      date: "5 Mar",
+      content: [
+        "Hi Musab, we reviewed your application.",
+        "We're pleased to move you to the next stage.",
+      ],
+    },
+    {
+      name: "James Morgan",
+      title: "Lead Frontend Engineer",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+      date: "4 Mar",
+      content: [
+        "Can you take a look at our latest UI draft?",
+        "Would love your feedback.",
+      ],
+    },
+    {
+      name: "Ava Smith",
+      title: "Technical Recruiter - Remote Jobs",
+      avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+      date: "3 Mar",
+      content: [
+        "Remote opportunity available for you!",
+        "Let me know if you're interested.",
+      ],
+    },
+    {
+      name: "Liam Johnson",
+      title: "Founder at DevStartups",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+      date: "2 Mar",
+      content: ["Thanks for reaching out.", "Let’s schedule a quick call."],
+    },
+    {
+      name: "Emily Davis",
+      title: "Product Designer at Appify",
+      avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+      date: "28 Feb",
+      content: [
+        "Would you like to collaborate on a Figma project?",
+        "I admire your work.",
+      ],
+    },
+    {
+      name: "Noah Thompson",
+      title: "DevOps Engineer at CloudNet",
+      avatar: "https://randomuser.me/api/portraits/men/7.jpg",
+      date: "27 Feb",
+      content: [
+        "Deployment process updated.",
+        "See internal repo for details.",
+      ],
+    },
+    {
+      name: "Sophia Turner",
+      title: "Full Stack Developer",
+      avatar: "https://randomuser.me/api/portraits/women/8.jpg",
+      date: "26 Feb",
+      content: ["Check out this repo.", "Let’s sync later this week."],
+    },
+    {
+      name: "William Scott",
+      title: "Engineering Manager at CodeBase",
+      avatar: "https://randomuser.me/api/portraits/men/9.jpg",
+      date: "25 Feb",
+      content: [
+        "Great job on the last sprint!",
+        "Let’s plan the retrospective.",
+      ],
+    },
+    {
+      name: "Olivia Wilson",
+      title: "CTO at Innovatech",
+      avatar: "https://randomuser.me/api/portraits/women/10.jpg",
+      date: "24 Feb",
+      content: ["Excited about our Q3 roadmap.", "Thanks for the feedback."],
+    },
+  ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [newMessage, setNewMessage] = useState("");
   const selected = messages[selectedIndex];
   const sidebarRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      if (selectedIndex === -1) return;
+      const sidebar = sidebarRef.current;
+      const chatPanel = document.getElementById("chat-panel");
       if (
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target as Node)
+        sidebar &&
+        !sidebar.contains(event.target as Node) &&
+        chatPanel &&
+        !chatPanel.contains(event.target as Node)
       ) {
-        setSelectedIndex(-1); // or whatever logic you want to close the menu
+        setSelectedIndex(-1);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [selectedIndex]);
 
   return (
     <div className="flex h-screen dark:bg-zinc-900 text-white">
@@ -166,7 +177,7 @@ export default function MessagingPage() {
 
       {/* Chat Panel */}
       {selectedIndex !== -1 && (
-        <div className="flex-1 flex flex-col">
+        <div id="chat-panel" className="flex-1 flex flex-col">
           <div className="p-4 border-b border-zinc-700">
             <div className="flex items-center gap-3">
               <img
@@ -185,23 +196,40 @@ export default function MessagingPage() {
           </div>
           <div className="flex-1 overflow-y-auto p-4 space-y-6 h-full max-h-screen">
             {selected.content.map((text, index) => (
-              <div key={index} className="flex items-start gap-3 mb-4">
-                <img
-                  src={selected.avatar}
-                  alt={selected.name}
-                  className="w-8 h-8 rounded-full mt-1"
-                />
-                <div>
-                  <div className="text-sm text-white font-semibold">
-                    {selected.name}
+              <div
+                key={index}
+                className={`flex mb-4 ${
+                  index === selected.content.length - 1
+                    ? "justify-end"
+                    : "items-start gap-3"
+                }`}
+              >
+                {index === selected.content.length - 1 ? (
+                  <div className="flex flex-col items-end">
+                    <p className="text-sm text-zinc-300 bg-blue-600 p-3 rounded-lg max-w-lg text-white">
+                      {text}
+                    </p>
                   </div>
-                  <div className="text-xs text-zinc-400 mb-1">
-                    {selected.title}
-                  </div>
-                  <p className="text-sm text-zinc-300 bg-zinc-800 p-3 rounded-lg max-w-lg">
-                    {text}
-                  </p>
-                </div>
+                ) : (
+                  <>
+                    <img
+                      src={selected.avatar}
+                      alt={selected.name}
+                      className="w-8 h-8 rounded-full mt-1"
+                    />
+                    <div>
+                      <div className="text-sm text-white font-semibold">
+                        {selected.name}
+                      </div>
+                      <div className="text-xs text-zinc-400 mb-1">
+                        {selected.title}
+                      </div>
+                      <p className="text-sm text-zinc-300 bg-zinc-800 p-3 rounded-lg max-w-lg">
+                        {text}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -210,8 +238,19 @@ export default function MessagingPage() {
               type="text"
               placeholder="Type a message..."
               className="flex-1 px-4 py-2 rounded-md bg-zinc-800 focus:outline-none"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
             />
-            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm">
+            <button
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm"
+              onClick={() => {
+                if (!newMessage.trim()) return;
+                const updatedMessages = [...messages];
+                updatedMessages[selectedIndex].content.push(newMessage);
+                setNewMessage("");
+                setMessages(updatedMessages);
+              }}
+            >
               Send
             </button>
           </div>
