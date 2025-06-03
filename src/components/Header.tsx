@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   HomeIcon,
@@ -12,7 +12,7 @@ import {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -28,7 +28,7 @@ export default function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
@@ -54,7 +54,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="/mynetwork"
+            href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <UsersIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -72,7 +72,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="/messaging"
+            href="#"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -89,12 +89,12 @@ export default function Header() {
               Notifications
             </span>
             <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full px-1">
-              11
+              9
             </span>
           </Link>
           <div
-            className="relative text-gray-700 dark:text-gray-300"
             ref={dropdownRef}
+            className="relative text-gray-700 dark:text-gray-300"
           >
             <div
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
