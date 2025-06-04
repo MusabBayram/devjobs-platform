@@ -54,7 +54,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/mynetwork"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <UsersIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -72,7 +72,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/messaging"
             className="group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -81,7 +81,7 @@ export default function Header() {
             </span>
           </Link>
           <Link
-            href="#"
+            href="/notifications"
             className="relative group flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <BellIcon className="h-5 w-5 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
