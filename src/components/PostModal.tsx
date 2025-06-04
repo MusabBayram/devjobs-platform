@@ -28,7 +28,7 @@ export default function PostModal({ onClose }: PostModalProps) {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-start pt-10 overflow-y-auto bg-black bg-opacity-100 md:bg-opacity-60">
+    <div className="fixed inset-0 z-50 flex justify-center items-start pt-10 overflow-y-auto bg-black md:bg-black/60">
       <div
         ref={modalRef}
         className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg w-full max-w-md mx-4"
