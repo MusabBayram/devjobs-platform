@@ -50,7 +50,7 @@ export async function getJobs(): Promise<Job[]> {
 
 function PostFeed() {
   const [posts, setPosts] = useState<BusinessPost[]>([]);
-  const [localPost, setLocalPost] = useState<BusinessPost | null>(null);
+  const [localPosts, setLocalPosts] = useState<BusinessPost[]>([]);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -64,16 +64,17 @@ function PostFeed() {
       try {
         const parsedPosts = JSON.parse(storedPosts);
         if (Array.isArray(parsedPosts) && parsedPosts.length > 0) {
-          const latestPost = parsedPosts[0];
-          const newLocalPost = {
-            id: latestPost.id,
-            name: latestPost.author,
-            company: "Shared via FocusDay",
-            image: "/avatar-placeholder.png",
-            headline: latestPost.content,
-            date: new Date(latestPost.date).toISOString().split("T")[0],
-          };
-          setLocalPost(newLocalPost);
+          const newLocalPosts: BusinessPost[] = parsedPosts.map(
+            (post: any) => ({
+              id: post.id,
+              name: post.author,
+              company: "Shared via FocusDay",
+              image: "/avatar-placeholder.png",
+              headline: post.content,
+              date: new Date(post.date).toISOString().split("T")[0],
+            })
+          );
+          setLocalPosts(newLocalPosts);
         }
       } catch (e) {
         console.error("Failed to parse posts from localStorage", e);
@@ -113,26 +114,30 @@ function PostFeed() {
           </div>
         </div>
       </div>
-      {localPost && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-          <div className="flex items-center space-x-4 mb-2">
-            <img
-              src={localPost.image}
-              alt={localPost.name}
-              className="w-14 h-14 rounded-full object-cover bg-gray-300"
-              onError={(e) => (e.currentTarget.style.display = "none")}
-            />
-            <div>
-              <h3 className="text-lg font-semibold">{localPost.name}</h3>
-              <p className="text-sm text-gray-500">{localPost.company}</p>
+      {localPosts.length > 0 &&
+        localPosts.map((localPost) => (
+          <div
+            key={localPost.id}
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6"
+          >
+            <div className="flex items-center space-x-4 mb-2">
+              <img
+                src={localPost.image}
+                alt={localPost.name}
+                className="w-14 h-14 rounded-full object-cover bg-gray-300"
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+              <div>
+                <h3 className="text-lg font-semibold">{localPost.name}</h3>
+                <p className="text-sm text-gray-500">{localPost.company}</p>
+              </div>
             </div>
+            <p className="text-gray-700 dark:text-gray-300">
+              {localPost.headline}
+            </p>
+            <p className="text-xs text-gray-400 mt-2">{localPost.date}</p>
           </div>
-          <p className="text-gray-700 dark:text-gray-300">
-            {localPost.headline}
-          </p>
-          <p className="text-xs text-gray-400 mt-2">{localPost.date}</p>
-        </div>
-      )}
+        ))}
       {posts.length === 0 ? (
         <p>Loading...</p>
       ) : (
