@@ -34,7 +34,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 shadow-md py-2 px-4">
       <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xs bg-zinc-600 text-white flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xs bg-blue-600 text-white flex items-center justify-center font-bold">
             {"DJ".slice(0, 2).toUpperCase()}
           </div>
           <input
