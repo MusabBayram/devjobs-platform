@@ -22,7 +22,7 @@ export default function SidebarProfile() {
       </div>
       <div className="mt-4 border-t border-gray-200 dark:border-zinc-700 pt-4">
         <div className="flex justify-between text-sm text-zinc-500 dark:text-zinc-400">
-          <span>Profile views</span>
+          <span>Profile views </span>
           <span className="font-medium text-blue-500">34</span>
         </div>
         <div className="flex justify-between text-sm text-zinc-500 dark:text-zinc-400 mt-2">
