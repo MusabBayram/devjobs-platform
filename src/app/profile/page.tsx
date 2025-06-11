@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 export default function ProfilePage() {
   return (
     <main className="max-w-5xl mx-auto p-4">
