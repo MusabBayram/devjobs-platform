@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 export default function MessagingPage() {
@@ -122,7 +123,7 @@ export default function MessagingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [newMessage, setNewMessage] = useState("");
   const selected = messages[selectedIndex];
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
