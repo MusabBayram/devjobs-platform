@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -65,6 +66,7 @@ function PostFeed() {
         const parsedPosts = JSON.parse(storedPosts);
         if (Array.isArray(parsedPosts) && parsedPosts.length > 0) {
           const newLocalPosts: BusinessPost[] = parsedPosts.map(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (post: any) => ({
               id: post.id,
               name: post.author,
