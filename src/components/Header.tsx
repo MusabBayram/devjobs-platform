@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -137,6 +138,7 @@ export default function Header() {
                 </div>
                 <Link
                   href="/profile"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="block text-center w-full text-sm text-blue-600 font-semibold py-1.5 rounded-md hover:bg-blue-50 dark:hover:bg-zinc-800 border border-blue-600 transition mb-2"
                 >
                   View Profile
