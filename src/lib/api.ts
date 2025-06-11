@@ -16,6 +16,7 @@ export async function getBusinessPosts(): Promise<BusinessPost[]> {
 
     const data = await res.json();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const posts: BusinessPost[] = data.users.map((user: any) => ({
         id: user.id,
         name: `${user.firstName} ${user.lastName}`,
