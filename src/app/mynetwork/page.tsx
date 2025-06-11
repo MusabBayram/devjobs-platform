@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 
 const users = [
   {
@@ -62,29 +61,10 @@ const users = [
 ];
 
 export default function MyNetworkPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !(menuRef.current as any).contains(event.target)) {
-        setMenuOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <div className="flex p-4 max-w-screen-xl mx-auto md:pt-16">
       <div className="hidden md:block w-1/4 pr-4">
-        <div
-          className="bg-zinc-900 p-4 rounded-lg text-zinc-100 space-y-4"
-          ref={menuRef}
-        >
+        <div className="bg-zinc-900 p-4 rounded-lg text-zinc-100 space-y-4">
           <h2 className="text-lg font-semibold">Manage my network</h2>
           <ul className="space-y-2 text-sm">
             <li className="flex justify-between items-center border-b border-zinc-700 pb-2">
